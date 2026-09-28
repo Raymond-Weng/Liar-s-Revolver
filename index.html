@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>Liar's Revolver</title>
+  <meta name="description" content="Liar's Bar 左輪模擬器：6 發彈巢、1 發實彈，扣下扳機看你的運氣。">
+  <meta name="theme-color" content="#120a07">
+
+  <!-- iPhone 加入主畫面 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Revolver">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <header class="top">
+      <h1>LIAR'S REVOLVER</h1>
+      <p class="sub">6 發彈巢 · 1 發實彈</p>
+    </header>
+
+    <section class="stage">
+      <div class="marker" aria-hidden="true"></div>
+      <svg id="cylinder" class="cylinder" viewBox="-100 -100 200 200" aria-label="彈巢">
+        <defs>
+          <radialGradient id="steel" cx="35%" cy="30%" r="80%">
+            <stop offset="0%" stop-color="#9aa0a6"/>
+            <stop offset="55%" stop-color="#4a4f55"/>
+            <stop offset="100%" stop-color="#1c1f22"/>
+          </radialGradient>
+          <radialGradient id="hole" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#000"/>
+            <stop offset="80%" stop-color="#0b0b0b"/>
+            <stop offset="100%" stop-color="#2a2d30"/>
+          </radialGradient>
+          <radialGradient id="brass" cx="40%" cy="35%" r="70%">
+            <stop offset="0%" stop-color="#ffe6a3"/>
+            <stop offset="50%" stop-color="#c9922e"/>
+            <stop offset="100%" stop-color="#6b4210"/>
+          </radialGradient>
+        </defs>
+        <g id="rotor">
+          <circle r="92" fill="url(#steel)" stroke="#0d0f10" stroke-width="3"/>
+          <g id="chambers"></g>
+          <circle r="14" fill="#2b2f33" stroke="#0d0f10" stroke-width="2"/>
+          <circle r="5" fill="#111"/>
+        </g>
+      </svg>
+    </section>
+
+    <section class="info">
+      <div class="stat">
+        <span class="label">已扣</span>
+        <span id="pulls" class="value">0</span>
+      </div>
+      <div class="stat">
+        <span class="label">剩餘</span>
+        <span id="remain" class="value">6</span>
+      </div>
+    </section>
+
+    <p id="status" class="status">扣下扳機吧。</p>
+
+    <div class="controls">
+      <button id="trigger" class="trigger" type="button">扣扳機</button>
+      <button id="reload" class="reload" type="button">按住重新裝填</button>
+    </div>
+
+    <a class="home" href="https://raymondweng.dev">raymondweng.dev</a>
+  </main>
+
+  <div id="flash" class="flash" aria-hidden="true"></div>
+
+  <div id="dead" class="dead" hidden>
+    <div class="bang">BANG!</div>
+    <p class="dead-msg">你死了。</p>
+    <p id="dead-detail" class="dead-detail"></p>
+    <button id="again" class="trigger" type="button">重新裝填</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
