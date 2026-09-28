@@ -1,5 +1,5 @@
 // 改版時把版本號 +1，使用者下次開啟就會拿到新檔案
-const CACHE = 'revolver-v8';
+const CACHE = 'revolver-v9';
 const ASSETS = [
   './',
   './index.html',
@@ -12,7 +12,12 @@ const ASSETS = [
 ];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+  // cache: 'reload' 繞過瀏覽器的 HTTP 快取，確保存進去的是新版檔案
+  e.waitUntil(
+    caches.open(CACHE)
+      .then((c) => c.addAll(ASSETS.map((u) => new Request(u, { cache: 'reload' }))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', (e) => {

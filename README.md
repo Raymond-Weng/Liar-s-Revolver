@@ -30,7 +30,7 @@ style.css             樣式
 app.js                遊戲邏輯、音效、防熄屏
 sw.js                 Service Worker（離線快取）
 manifest.webmanifest  PWA 設定
-icons/                App 圖示（180 / 192 / 512）
+icons/                App 圖示（180 / 192 / 512）與分享預覽圖 og.png
 _headers              Cloudflare Pages 的 HTTP header
 ```
 
