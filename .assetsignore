@@ -1,0 +1,12 @@
+.git
+.claude
+.DS_Store
+.gitignore
+.gitattributes
+README.md
+LICENSE
+wrangler.json
+wrangler.jsonc
+wrangler.toml
+node_modules
+.wrangler
