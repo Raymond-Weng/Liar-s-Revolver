@@ -1,0 +1,9 @@
+name = "liar-s-revolver"
+compatibility_date = "2026-09-28"
+workers_dev = false
+preview_urls = false
+routes = [{ pattern = "gun.raymondweng.dev", custom_domain = true }]
+
+# 純靜態網站；不上傳的檔案列在 .assetsignore
+[assets]
+directory = "."
