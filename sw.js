@@ -1,5 +1,5 @@
 // 改版時把版本號 +1，使用者下次開啟就會拿到新檔案
-const CACHE = 'revolver-v7';
+const CACHE = 'revolver-v8';
 const ASSETS = [
   './',
   './index.html',

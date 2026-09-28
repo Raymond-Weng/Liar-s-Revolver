@@ -425,6 +425,21 @@
 
   if (!restore()) load(false);
 
+  // ---------- iPhone 加入主畫面提示：只在 iOS 瀏覽器、還沒從主畫面打開時顯示 ----------
+  const A2HS_KEY = 'revolver-a2hs-dismissed';
+  const a2hsEl = $('a2hs');
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent)
+    || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1); // iPadOS 會偽裝成 Mac
+  let a2hsDismissed = false;
+  try { a2hsDismissed = localStorage.getItem(A2HS_KEY) === '1'; } catch (_) {}
+  if (isIOS && !standalone && !a2hsDismissed) {
+    a2hsEl.hidden = false;
+    $('a2hs-close').addEventListener('click', () => {
+      a2hsEl.hidden = true;
+      try { localStorage.setItem(A2HS_KEY, '1'); } catch (_) {}
+    });
+  }
+
   // ---------- PWA ----------
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     window.addEventListener('load', () => {
